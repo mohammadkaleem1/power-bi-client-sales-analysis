@@ -77,13 +77,21 @@ Assesses carrier performance, transportation modes, and average shipping costs v
 Highlights inventory risk by comparing total stock against demand, calculating a stock-to-demand ratio to flag potential overstock or stockout scenarios.
 
 ## 🖼️ DASHBOARD PREVIEW
-*(You will need to manually export the screenshots from Power BI Desktop to populate this section. Please export the 5 pages as PNG files and save them in an `images/` folder inside this repository using the exact filenames listed below.)*
 
-- `images/executive-overview.png`
-- `images/sales-product-analysis.png`
-- `images/supplier-performance.png`
-- `images/logistics-shipping.png`
-- `images/inventory-analysis.png`
+### Executive Overview
+![Executive Overview](images/executive-overview.png)
+
+### Sales & Product Performance
+![Sales & Product Performance](images/sales-product-analysis.png)
+
+### Supplier Performance
+![Supplier Performance](images/supplier-performance.png)
+
+### Logistics & Shipping
+![Logistics & Shipping](images/logistics-shipping.png)
+
+### Customer Insights
+![Customer Insights](images/customer-insights.png)
 
 ## 💡 KEY BUSINESS QUESTIONS
 - Which product categories generate the highest revenue?
@@ -144,7 +152,7 @@ power-bi-client-sales-analysis/
     ├── sales-product-analysis.png
     ├── supplier-performance.png
     ├── logistics-shipping.png
-    └── inventory-analysis.png
+    └── customer-insights.png
 ```
 
 ## 👨💻 AUTHOR
