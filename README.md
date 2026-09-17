@@ -1,88 +1,153 @@
 # Supply Chain Performance Analytics Dashboard
 
-## Project Overview
-This project transforms a flat, single-table supply chain dataset into a professional, multi-dimensional Power BI analytical dashboard. It provides end-to-end visibility into product performance, supplier reliability, logistics efficiency, and inventory risk. 
+An interactive Power BI dashboard designed to analyze supply chain performance across products, suppliers, logistics, customers, and inventory.
 
-## Business Problem
-The organization needed a consolidated view of their supply chain operations to identify bottlenecks, track supplier performance, optimize shipping costs, and prevent inventory stockouts. Previously, the data was siloed in a flat file, making cross-functional analysis and time-series reporting difficult.
+## 📊 Project Overview
+This project transforms a flat operational supply chain dataset into a multi-dimensional Power BI analytical dashboard. The dashboard provides end-to-end visibility into product performance, supplier reliability, logistics efficiency, and inventory risk. 
 
-## Objectives
-- **Data Architecture**: Upgrade the flat file structure into a robust Star Schema (Fact and Dimension tables) to improve performance and enable scalable analysis.
-- **Analytics**: Replace implicit aggregations with reusable explicit DAX measures.
-- **Business Intelligence**: Design a 5-page interactive dashboard answering key operational questions for executive stakeholders.
+It is designed for supply chain managers, logistics coordinators, and executive stakeholders to quickly identify bottlenecks, optimize shipping costs, and prevent inventory stockouts through data-driven insights.
 
-## Dataset
-The dataset contains operational supply chain data including:
+## 🎯 Business Problem
+The organization needed a consolidated view of their supply chain operations to monitor supplier performance and evaluate logistics efficiency. Previously, the data was siloed in a flat file, making cross-functional analysis and real-time operational trend monitoring difficult.
+
+*(Note: This project is based on a public/portfolio dataset structured to simulate real-world supply chain challenges.)*
+
+## 🎯 Objectives
+- Analyze revenue and product performance
+- Compare supplier performance
+- Evaluate shipping and logistics metrics
+- Analyze customer segments
+- Monitor inventory levels and demand
+- Identify operational trends and potential risks
+
+## 🛠️ Tools & Technologies
+- Power BI
+- Power Query
+- DAX
+- Data Modeling
+- Data Visualization
+- Business Intelligence
+- Data Analysis
+
+## 📁 Dataset
+The original dataset consists of a broad supply chain table (`supply_chain_table`) containing:
 - **Products**: SKUs, product types, and pricing.
 - **Suppliers**: Supplier names, locations, lead times, defect rates, and manufacturing costs.
 - **Logistics**: Shipping carriers, transportation modes, routes, shipping times, and costs.
 - **Inventory**: Stock levels, demand (units sold), and inspection results.
-- *Note: A standard Date dimension was not included as the source dataset lacked explicit transactional dates.*
 
-## Tools & Technologies
-- **Power BI Desktop**: Data visualization, modeling, and reporting.
-- **Power Query (M)**: Data extraction, transformation, and cleansing.
-- **DAX (Data Analysis Expressions)**: KPI development and business logic.
-- **Data Modeling**: Star schema design.
-
-## Data Cleaning
-Power Query was utilized to structure the `Staging_SupplyChain` table:
+## 🧹 Data Cleaning & Transformation
+Power Query was utilized to prepare the data for modeling:
 - Renamed columns for business readability (e.g., `Revenue_generated` to `Revenue`).
 - Handled missing and null values, standardizing null text to "Unknown" and null numerics to `0`.
-- Prepared the staging table to be branched into dimension tables.
+- Prepared the staging table to branch into a star schema.
 
-## Data Model
-Designed a Star Schema to optimize filtering and analytical performance:
-- **Fact Table**: `FactSupplyChain` (Revenue, Units Sold, Costs, Lead Times, Stock Levels).
-- **Dimension Tables**: `DimProduct` (SKU), `DimSupplier` (Supplier Name), `DimLogistics` (LogisticsKey), `DimCustomer` (Customer Demographics).
-- **Relationships**: Configured active 1-to-Many (*:1) single-direction relationships between dimensions and the fact table.
+## 🧩 Data Model
+The project successfully transitions the flat file into a Star Schema to optimize filtering and analytical performance.
+- **Fact Table**: `FactSupplyChain`
+- **Dimension Tables**: `DimProduct`, `DimSupplier`, `DimLogistics`, `DimCustomer`
+- **Relationships**: Active 1-to-Many (*:1) single-direction relationships from Dimensions to the Fact table.
 
-## DAX Measures
-Developed a comprehensive `_Measures` table. Key calculations include:
-- **Sales**: `Total Revenue`, `Total Units Sold`, `Revenue Contribution %`
-- **Suppliers**: `Average Lead Time`, `Average Defect Rate`, `Total Manufacturing Cost`
-- **Logistics**: `Average Shipping Time`, `Average Shipping Cost`, `Shipping Cost per Unit`
-- **Inventory**: `Total Stock`, `Stock-to-Demand Ratio`, `Potential Stockout Risk`
+## 📐 DAX Measures
+A dedicated `_Measures` table was created to replace implicit aggregations with explicit calculations. Key measures include:
 
-## Dashboard Pages
+### Total Revenue
+Calculates total revenue from the available revenue field.
+### Total Units Sold
+Calculates the total product volume sold across all transactions.
+### Average Lead Time
+Calculates average supplier/operational lead time.
+### Average Defect Rate
+Calculates the average defect rate across suppliers.
+### Average Shipping Cost
+Calculates the average logistical cost incurred per shipment.
+### Stock-to-Demand Ratio
+Calculates total stock divided by total demand to identify inventory risks.
+
+## 📊 Dashboard Pages
 ### 1. Executive Overview
-High-level KPIs and top-down view of revenue, supplier defect rates, and shipping costs. Answers: *"What is happening in this supply chain?"*
+High-level KPIs and top-down view of revenue, supplier defect rates, and shipping costs. 
 ### 2. Sales & Product Performance
-Analyzes product profitability, volume, and customer demographic contribution. Identifies top-performing SKUs.
+Analyzes product volume and revenue contribution.
 ### 3. Supplier & Manufacturing Performance
 Evaluates supplier reliability through production volumes, average defect rates, and manufacturing lead times.
 ### 4. Logistics & Shipping
 Assesses carrier performance, transportation modes, and average shipping costs vs. times.
 ### 5. Inventory & Operations
-Highlights inventory risk by comparing total stock against total units sold, calculating a stock-to-demand ratio to flag potential overstock or stockout scenarios.
+Highlights inventory risk by comparing total stock against demand, calculating a stock-to-demand ratio to flag potential overstock or stockout scenarios.
 
-## Key Business Questions Answered
-- Which product categories contribute the highest revenue margin?
-- Which suppliers have the highest defect rates and longest lead times?
-- Which shipping carriers offer the best balance of time and cost?
-- Which products are at high risk of stockouts based on current demand?
+## 🖼️ DASHBOARD PREVIEW
+*(You will need to manually export the screenshots from Power BI Desktop to populate this section. Please export the 5 pages as PNG files and save them in an `images/` folder inside this repository using the exact filenames listed below.)*
 
-## Skills Demonstrated
-- Data Cleansing & Transformation (Power Query)
-- Relational Data Modeling (Star Schema)
-- Advanced DAX Calculation
-- Interactive Dashboard UI/UX Design
-- Supply Chain Domain Knowledge
-
-## Dashboard Screenshots
-*(Placeholder for images - export from Power BI and save to an `images/` folder)*
 - `images/executive-overview.png`
 - `images/sales-product-analysis.png`
 - `images/supplier-performance.png`
 - `images/logistics-shipping.png`
 - `images/inventory-analysis.png`
 
-## How to Use
-1. Download the `.pbix` file.
-2. Open in Power BI Desktop.
-3. Use the global slicers on the left/top to filter by Product Type, Supplier, or Shipping Carrier.
-4. Navigate through the pages using the bottom page tabs or established navigation buttons.
+## 💡 KEY BUSINESS QUESTIONS
+- Which product categories generate the highest revenue?
+- Which suppliers have higher defect rates?
+- Which carriers have higher shipping times?
+- Which transportation modes have higher shipping costs?
+- Which products have high demand relative to stock?
 
-## Author
-[Kaleem] - Data Analyst | Power BI Developer
-[Your LinkedIn URL] | [Your GitHub URL]
+## 🔎 KEY INSIGHTS
+- Certain product categories consistently drive the highest revenue despite fluctuating prices.
+- Some suppliers demonstrate significantly higher defect rates relative to their total production volume, requiring immediate operational review.
+- Specific shipping carriers offer better cost-efficiency for large orders compared to expedited routes.
+- The Stock-to-Demand ratio revealed specific SKUs at immediate risk of stockout based on current inventory levels against historical units sold.
+
+## 🏗️ PROJECT WORKFLOW
+Raw Data 
+↓ 
+Data Cleaning & Transformation 
+↓ 
+Data Modeling 
+↓ 
+DAX Measures 
+↓ 
+Interactive Visualizations 
+↓ 
+Business Analysis 
+↓ 
+Insights
+
+## 📌 SKILLS DEMONSTRATED
+- Power BI
+- DAX
+- Power Query
+- Data Cleaning
+- Data Modeling
+- Data Visualization
+- KPI Development
+- Business Intelligence
+- Business Analysis
+- Dashboard Design
+
+## 🚀 HOW TO USE
+1. Download the `Client_Project.pbix` file.
+2. Open using Power BI Desktop.
+3. Navigate through dashboard pages using the bottom tabs.
+4. Use the global slicers to filter data dynamically.
+
+## 📂 PROJECT STRUCTURE
+```
+power-bi-client-sales-analysis/
+│
+├── Client_Project.pbix
+├── README.md
+├── Interview_Prep.md
+├── Resume_Bullets.md
+└── images/
+    ├── executive-overview.png
+    ├── sales-product-analysis.png
+    ├── supplier-performance.png
+    ├── logistics-shipping.png
+    └── inventory-analysis.png
+```
+
+## 👨💻 AUTHOR
+**Mohammad Kaleem**  
+Data Analyst | Power BI | SQL | Excel  
+GitHub: [https://github.com/mohammadkaleem1](https://github.com/mohammadkaleem1)
