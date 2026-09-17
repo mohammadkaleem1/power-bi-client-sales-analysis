@@ -84,5 +84,5 @@ Highlights inventory risk by comparing total stock against total units sold, cal
 4. Navigate through the pages using the bottom page tabs or established navigation buttons.
 
 ## Author
-[Your Name] - Data Analyst | Power BI Developer
+[Kaleem] - Data Analyst | Power BI Developer
 [Your LinkedIn URL] | [Your GitHub URL]
